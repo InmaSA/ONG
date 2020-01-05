@@ -43,5 +43,17 @@ router.post('/edit', (req,res,next) => {
   })
 })
 
+
+router.get('/delete/:_id', (req,res,next) => {
+  console.log(req.params._id)
+  Volunteer.findByIdAndDelete(req.params._id)
+  .then((x) => {
+    console.log('eliminado de la base de datos')
+    res.status(200).json({message: 'eliminado de la base de datos'})
+  })
+  .catch(err => console.log({message: 'error eliminando el voluntario de la base de datos'}))
+})
+
+
 module.exports = router
 //const {nombre, dni, telefono, email, direccion, cp, fecha_nacimiento, delegacion, diocesis, grupo, cargo, cc, revista} = req.body

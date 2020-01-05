@@ -13,6 +13,7 @@ export default class VolunteerServices {
   addVolunteer = (volunteer) => this.service.post('volunteer/new', volunteer)
   getVolunteers = () => this.service.get('volunteer/list')
   editVolunteer = (volunteer) => this.service.post('volunteer/edit', volunteer)
+  deleteVolunteer = (_id) => this.service.get(`volunteer/delete/${_id}`)
 
   
 }  

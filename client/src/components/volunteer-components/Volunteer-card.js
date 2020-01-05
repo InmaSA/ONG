@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+
+import VolunteerServices from '../../services/volunteer.services'
 import '../../styles/volunteer-card.css'
 import Modal from 'react-bootstrap/Modal'
+
 import EditVolunteer from './Edit-volunteer'
 
 class VolunteerCard extends Component {
@@ -9,6 +13,7 @@ class VolunteerCard extends Component {
     this.state= {
       showModal: false
     }
+    this.volunteerServices = new VolunteerServices()
   }
   
   handleModalOpen = (e) => this.setState({ showModal: true })
@@ -17,6 +22,10 @@ class VolunteerCard extends Component {
     window.location.reload()
   }
 
+  delete = (e) => {
+    this.volunteerServices.deleteVolunteer(e.target.id)
+    window.location.reload()
+  }
 
   render() {
 
@@ -43,6 +52,7 @@ class VolunteerCard extends Component {
               <input name="revista" id="revista" type="checkbox" readOnly={true} checked={this.props.elm.revista}></input>
               <div>
                 <button onClick={this.handleModalOpen} className="btn btn-warning">Editar</button>
+                <button id={this.props.elm._id} onClick={this.delete} className="btn btn-danger">Eliminar</button>
               </div>
               
             </div>
