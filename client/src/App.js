@@ -49,21 +49,6 @@ class App extends Component {
         </>
       )
     }
-
-    // if (this.state.loggedInUser && this.state.loggedInUser.data.rol !== 'ADMIN') {
-    //   return (
-    //     <>
-    //       <AppNavbar user={this.state.loggedInUser} setUser={this.setTheUser}/>
-
-    //       <Switch>
-    //         <Route path="/" exact component={HomePage}></Route>
-    //         <Route path="/login" exact render={match => <Login {...match}  setUser={this.setTheUser} />}></Route>
-    //       </Switch>
-
-    //     </>
-    //   )
-    // }
-
      if (this.state.loggedInUser && this.state.loggedInUser.data.rol != 'ADMIN') {
       return (
         <>

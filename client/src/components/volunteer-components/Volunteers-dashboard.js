@@ -69,7 +69,7 @@ class VolunteersDashborad extends Component {
 
 
   render() {
-    console.log(this.props.user.data)
+
     {if (this.props.user.data.rol == 'ADMIN') {
       return(
         <main className="container unit-card">
@@ -143,7 +143,7 @@ class VolunteersDashborad extends Component {
           </section>
   
           <section>
-            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm}/>)}
+            {this.state.volunteersCopy.map(elm => <VolunteerCard rol={this.props.user.data.rol} key={elm._id} elm={elm}/>)}
           </section>
         </main>
       )

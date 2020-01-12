@@ -13,7 +13,6 @@ router.post('/new', (req,res,next) => {
 
 router.get('/list', (req,res,next) => {
   const {name, rol} = req.user
-  console.log(name,rol) 
 
   if (rol === 'DELEGADA') {
     Volunteer.find({delegacion: name})
