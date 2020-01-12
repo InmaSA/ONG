@@ -55,5 +55,14 @@ router.get('/delete/:_id', (req,res,next) => {
 })
 
 
+router.get('/find/:group', (req,res,next) => {
+  Volunteer.find({grupo: req.params.group})
+  .then(volunteers => res.json(volunteers))
+  .catch(err => {
+    res.status(500).json({message: 'Error obteniendo el listado de voluntarios para este grupo'})
+  })
+})
+
+
 module.exports = router
 //const {nombre, dni, telefono, email, direccion, cp, fecha_nacimiento, delegacion, diocesis, grupo, cargo, cc, revista} = req.body

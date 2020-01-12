@@ -1,11 +1,11 @@
-.volunteer-card {
+.card {
   border: 1px solid black;
   padding: 10px;
   margin-bottom: 40px;
 }
 
 
-.volunteer-card span {
+.card span {
   text-transform: uppercase;
   font-weight: bold;
 }

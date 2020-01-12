@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import '../../styles/dashboard.css'
 import VolunteerServices from '../../services/volunteer.services'
 import VolunteerCard from './Volunteer-card'
 
@@ -71,7 +72,7 @@ class VolunteersDashborad extends Component {
     // console.log(this.props.user.data)
 
     return(
-      <main className="container">
+      <main className="container unit-card">
         <section>
           <header>
             <h3>Filtra por campos:</h3>

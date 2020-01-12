@@ -6,7 +6,7 @@ import AppNavbar from './components/layouts/AppNavbar'
 import HomePage from './components/layouts/HomePage'
 import Login from './components/auth-components/Login'
 import NewGroup from './components/groups-components/NewGroup'
-import GroupsDashboard from './components/groups-components/Gruops-dashboard'
+import GroupsDashboard from './components/groups-components/Groups-dashboard'
 import VolunteersDashboard from './components/volunteer-components/Volunteers-dashboard'
 import NewVolunteer from './components/volunteer-components/NewVolunteer'
 

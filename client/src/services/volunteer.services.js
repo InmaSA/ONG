@@ -14,6 +14,7 @@ export default class VolunteerServices {
   getVolunteers = () => this.service.get('volunteer/list')
   editVolunteer = (volunteer) => this.service.post('volunteer/edit', volunteer)
   deleteVolunteer = (_id) => this.service.get(`volunteer/delete/${_id}`)
+  getVolunteersInAGroup = (group) => this.service.get(`volunteer/find/${group}`)
 
   
 }  

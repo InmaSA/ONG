@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 import VolunteerServices from '../../services/volunteer.services'
-import '../../styles/volunteer-card.css'
+import '../../styles/card.css'
 import Modal from 'react-bootstrap/Modal'
 
 import EditVolunteer from './Edit-volunteer'
@@ -31,7 +31,7 @@ class VolunteerCard extends Component {
 
     return (
       <>
-        <article className="volunteer-card">
+        <article className="card">
           <header className="row">
             <div className="col-6">
               <p><span>cargo: </span>{this.props.elm.cargo}</p>

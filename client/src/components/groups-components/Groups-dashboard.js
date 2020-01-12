@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import '../../styles/dashboard.css'
 import GroupServices from '../../services/group.services'
-import GruopCard from './Gruop-card'
+import GroupCard from './Group-card'
 
 class GroupsDashborad extends Component {
   constructor() {
@@ -21,8 +22,8 @@ class GroupsDashborad extends Component {
 
   render() {
     return(
-      <div className="container">
-      {this.state.groups.map(elm => <GruopCard key={elm._id} elm={elm} />)}
+      <div className="container unit-card">
+      {this.state.groups.map(elm => <GroupCard key={elm._id} elm={elm} />)}
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import '../../styles/gruop-card.css'
+import VolunteerServices from '../../services/volunteer.services'
+import '../../styles/card.css'
 import Modal from 'react-bootstrap/Modal'
 import EditNotes from './Edit-notes'
 
@@ -8,13 +9,23 @@ class GruopCard extends Component {
     super()
     this.state= {
       showModal: false,
-      notas: ''
+      notas: '',
+      grupo: '',
+      volunteers: []
     }
+    this.volunteerServices = new VolunteerServices()
   }
   
   componentDidMount() {
-    this.setState({notas: this.props.elm.notas})
+    this.setState({notas: this.props.elm.notas, grupo: this.props.elm.nombre})
+    this.findVolunteersInAGroup(this.props.elm.nombre)
   }
+
+  findVolunteersInAGroup(grupo) {
+    this.volunteerServices.getVolunteersInAGroup(grupo)
+    .then(response => this.setState({volunteers: response.data}))
+  }
+
 
 
   handleModalOpen = (e) => this.setState({ showModal: true })
@@ -25,9 +36,10 @@ class GruopCard extends Component {
 
 
   render() {
+
     return (
       <>
-        <article className="group-card">
+        <article className="card">
           <header className="row">
             <div className="col-6">
               <p><span>grupo: </span>{this.props.elm.nombre}</p>
@@ -47,6 +59,25 @@ class GruopCard extends Component {
               </div>
             </div>
           </header>
+
+          <hr></hr>
+          <p><span>Voluntarios de este grupo:</span></p>
+            {
+              this.state.volunteers.map((elm, idx) => {
+                return (
+                  <article className="row" key={idx}>
+                    <p className="col-2">{elm.nombre}</p> 
+                    <p className="col-2">{elm.cargo}</p> 
+                    <p className="col-2">{elm.telefono}</p>
+                    <p className="col-2">{elm.email}</p>
+                    <p className="col-2">{elm.direccion}</p>
+                  </article>  
+                )
+              })
+            }
+          <div>
+
+          </div>
           
         </article>
 
