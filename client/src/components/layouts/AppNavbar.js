@@ -50,6 +50,8 @@ class AppNavbar extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
+              <Nav.Link href="/voluntarios">Ver voluntarios</Nav.Link>
+              <Nav.Link href="/grupos">Ver grupos</Nav.Link>
               <Nav.Link href="/logout" onClick={this.logout}>Cerrar sesión</Nav.Link>
             </Nav>
           </Navbar.Collapse>

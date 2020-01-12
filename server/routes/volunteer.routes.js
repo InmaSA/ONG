@@ -12,11 +12,37 @@ router.post('/new', (req,res,next) => {
 })
 
 router.get('/list', (req,res,next) => {
-  Volunteer.find()
-  .then(allVolunteers => res.json(allVolunteers))
-  .catch(err => {
-    res.status(500).json({message: 'Error obteniendo el listado de voluntario'})
-  })
+  const {name, rol} = req.user
+  console.log(name,rol) 
+
+  if (rol === 'DELEGADA') {
+    Volunteer.find({delegacion: name})
+    .then(allVolunteers => res.json(allVolunteers))
+    .catch(err => {
+      res.status(500).json({message: 'Error obteniendo el listado de voluntarios'})
+    })
+  }
+  else if (rol === 'DIOCESANA') {
+    Volunteer.find({diocesis: name})
+    .then(allVolunteers => res.json(allVolunteers))
+    .catch(err => {
+      res.status(500).json({message: 'Error obteniendo el listado de voluntarios'})
+    })
+  }
+  else if (rol === 'GRUPO') {
+    Volunteer.find({grupo: name})
+    .then(allVolunteers => res.json(allVolunteers))
+    .catch(err => {
+      res.status(500).json({message: 'Error obteniendo el listado de voluntarios'})
+    })
+  }
+  else {
+    Volunteer.find()
+    .then(allVolunteers => res.json(allVolunteers))
+    .catch(err => {
+      res.status(500).json({message: 'Error obteniendo el listado de voluntarios'})
+    })
+  }
 })
 
 router.post('/edit', (req,res,next) => {

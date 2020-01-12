@@ -69,36 +69,97 @@ class VolunteersDashborad extends Component {
 
 
   render() {
-    // console.log(this.props.user.data)
-
-    return(
-      <main className="container unit-card">
-        <section>
-          <header>
-            <h3>Filtra por campos:</h3>
-          </header>
-          <div className="row">
-            <form className="form-inline">
-              <label className="label" htmlFor="filter-delegacion">Delegación: </label>
-              <input className="form-control form-control-sm" type="text" name="delegacion" id="filter-delegacion" value={this.state.delegacion} onChange={this.handleSearchInput}></input>
-            </form>
-            <form className="form-inline">
-              <label className="label" htmlFor="filter-diocesis">Diócesis: </label>
-              <input className="form-control form-control-sm" type="text" name="diocesis" id="filter-diocesis" value={this.state.diocesis} onChange={this.handleSearchInput}></input>
-            </form>
-            <form className="form-inline">
-              <label className="label" htmlFor="filter-grupo">Grupo: </label>
-              <input className="form-control form-control-sm" type="text" name="grupo" id="filter-grupo" value={this.state.grupo} onChange={this.handleSearchInput}></input>
-            </form>
-            <button onClick={this.clearAll} className="submit-btn btn-light" type="submit">Refrescar las búsquedas</button>
-          </div>
-        </section>
-
-        <section>
-          {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm}/>)}
-        </section>
-      </main>
-    )
+    console.log(this.props.user.data)
+    {if (this.props.user.data.rol == 'ADMIN') {
+      return(
+        <main className="container unit-card">
+          <section>
+            <header>
+              <h3>Filtra por campos:</h3>
+            </header>
+            <div className="row">
+              <form className="form-inline">
+                <label className="label" htmlFor="filter-delegacion">Delegación: </label>
+                <input className="form-control form-control-sm" type="text" name="delegacion" id="filter-delegacion" value={this.state.delegacion} onChange={this.handleSearchInput}></input>
+              </form>
+              <form className="form-inline">
+                <label className="label" htmlFor="filter-diocesis">Diócesis: </label>
+                <input className="form-control form-control-sm" type="text" name="diocesis" id="filter-diocesis" value={this.state.diocesis} onChange={this.handleSearchInput}></input>
+              </form>
+              <form className="form-inline">
+                <label className="label" htmlFor="filter-grupo">Grupo: </label>
+                <input className="form-control form-control-sm" type="text" name="grupo" id="filter-grupo" value={this.state.grupo} onChange={this.handleSearchInput}></input>
+              </form>
+              <button onClick={this.clearAll} className="submit-btn btn-light" type="submit">Refrescar las búsquedas</button>
+            </div>
+          </section>
+  
+          <section>
+            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm}/>)}
+          </section>
+        </main>
+      )
+    }
+    if (this.props.user.data.rol == 'DELEGADA') {
+      return(
+        <main className="container unit-card">
+          <section>
+            <header>
+              <h3>Filtra por campos:</h3>
+            </header>
+            <div className="row">
+              <form className="form-inline">
+                <label className="label" htmlFor="filter-diocesis">Diócesis: </label>
+                <input className="form-control form-control-sm" type="text" name="diocesis" id="filter-diocesis" value={this.state.diocesis} onChange={this.handleSearchInput}></input>
+              </form>
+              <form className="form-inline">
+                <label className="label" htmlFor="filter-grupo">Grupo: </label>
+                <input className="form-control form-control-sm" type="text" name="grupo" id="filter-grupo" value={this.state.grupo} onChange={this.handleSearchInput}></input>
+              </form>
+              <button onClick={this.clearAll} className="submit-btn btn-light" type="submit">Refrescar las búsquedas</button>
+            </div>
+          </section>
+  
+          <section>
+            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm}/>)}
+          </section>
+        </main>
+      )
+    }
+    if (this.props.user.data.rol == 'DIOCESANA') {
+      return(
+        <main className="container unit-card">
+          <section>
+            <header>
+              <h3>Filtra por campos:</h3>
+            </header>
+            <div className="row">
+              <form className="form-inline">
+                <label className="label" htmlFor="filter-grupo">Grupo: </label>
+                <input className="form-control form-control-sm" type="text" name="grupo" id="filter-grupo" value={this.state.grupo} onChange={this.handleSearchInput}></input>
+              </form>
+              <button onClick={this.clearAll} className="submit-btn btn-light" type="submit">Refrescar las búsquedas</button>
+            </div>
+          </section>
+  
+          <section>
+            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm}/>)}
+          </section>
+        </main>
+      )
+    }
+  
+    else {
+      return(
+        <main className="container unit-card">
+          <section>
+            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm}/>)}
+          </section>
+        </main>
+      )
+    }
+  }
+    
   }
 }
 

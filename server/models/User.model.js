@@ -5,8 +5,9 @@ const userSchema = new Schema ({
   username: String,
   password: String,
   rol: {type: String, 
-        enum: ['ADMIN', 'JUNTA', 'DELE', 'DIO', 'GRUPO'],
-        default: 'GRUPO'}
+        enum: ['ADMIN', 'JUNTA', 'DELEGADA', 'DIOCESANA', 'GRUPO'],
+        default: 'GRUPO'},
+  name: String,      
 },{timestamps: true})
 
 const User = mongoose.model('User', userSchema)

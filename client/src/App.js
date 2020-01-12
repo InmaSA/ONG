@@ -50,7 +50,21 @@ class App extends Component {
       )
     }
 
-    if (this.state.loggedInUser && this.state.loggedInUser.data.rol !== 'ADMIN') {
+    // if (this.state.loggedInUser && this.state.loggedInUser.data.rol !== 'ADMIN') {
+    //   return (
+    //     <>
+    //       <AppNavbar user={this.state.loggedInUser} setUser={this.setTheUser}/>
+
+    //       <Switch>
+    //         <Route path="/" exact component={HomePage}></Route>
+    //         <Route path="/login" exact render={match => <Login {...match}  setUser={this.setTheUser} />}></Route>
+    //       </Switch>
+
+    //     </>
+    //   )
+    // }
+
+     if (this.state.loggedInUser && this.state.loggedInUser.data.rol != 'ADMIN') {
       return (
         <>
           <AppNavbar user={this.state.loggedInUser} setUser={this.setTheUser}/>
@@ -58,11 +72,14 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={HomePage}></Route>
             <Route path="/login" exact render={match => <Login {...match}  setUser={this.setTheUser} />}></Route>
+            <Route path="/voluntarios" exact render={match => <VolunteersDashboard {...match} user={this.state.loggedInUser} />}></Route>
+            <Route path="/grupos" exact render={match => <GroupsDashboard {...match} user={this.state.loggedInUser} />}></Route>
           </Switch>
 
         </>
       )
     }
+
 
     return (
       <>
