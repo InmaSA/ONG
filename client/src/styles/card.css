@@ -9,3 +9,7 @@
   text-transform: uppercase;
   font-weight: bold;
 }
+
+.card .edit {
+  margin-right: 30px;
+}

@@ -13,7 +13,6 @@ const volunteerSchema = new Schema ({
   diocesis: String,
   grupo: String,
   cargo: {type: String, default: 'voluntario/a'},
-  cc: String,
   revista: {type: Boolean, default: false}
 }, {timestamps: true})
 

@@ -29,4 +29,3 @@ router.post('/edit-notes', (req,res,next) => {
 
 
 module.exports = router
-//const {nombre, poblacion, provincia, parroquia, diocesis, ereccion, n_registro, domicilio_social} = req.body

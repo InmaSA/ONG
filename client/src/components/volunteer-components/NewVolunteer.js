@@ -51,7 +51,6 @@ class NewVolunteer extends Component {
       cp: '',
       telefono: '',
       email: '',
-      cc: '',
       revista: false })
 
   render() {
@@ -105,7 +104,7 @@ class NewVolunteer extends Component {
 
           <div className="col-5">
             <div className="form-group">
-              <label htmlFor="fecha_nacimiento">Fecha de nacimiento</label>
+              <label htmlFor="fecha_nacimiento">Fecha de nacimiento (DD/MM/AAAA)</label>
               <input type="text" className="form-control" id="fecha_nacimiento" name="fecha_nacimiento" 
               value={this.state.fecha_nacimiento} onChange={this.handleInputChange}></input>
             </div>
@@ -128,11 +127,6 @@ class NewVolunteer extends Component {
               <label htmlFor="email">Email</label>
               <input type="text" className="form-control" id="email" name="email" 
               value={this.state.email} onChange={this.handleInputChange}></input>
-            </div>
-            <div className="form-group">
-              <label htmlFor="cc">C.C.</label>
-              <input type="text" className="form-control" id="cc" name="cc" 
-              value={this.state.cc} onChange={this.handleInputChange}></input>
             </div>
             <div className="form-group">
               <label htmlFor="revista">Revista</label>

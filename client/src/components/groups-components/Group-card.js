@@ -53,6 +53,7 @@ class GruopCard extends Component {
             <div className="col-6">
               <p><span>fecha patente de erección: </span>{this.props.elm.ereccion}</p>
               <p><span>registro núm.: </span>{this.props.elm.n_registro}</p>
+              <p><span>c.c.: </span>{this.props.elm.cc}</p>
               <p><span>notas: </span>{this.props.elm.notas}</p>
               <div>
                 <button onClick={this.handleModalOpen} className="btn btn-warning">Editar notas</button>

@@ -14,6 +14,7 @@ class NewGroup extends Component {
       poblacion: '',
       ereccion: '',
       n_registro: '',
+      cc: '',
       notas: ''
     }
     this.groupServices = new GroupServices()
@@ -84,6 +85,11 @@ class NewGroup extends Component {
               <label htmlFor="n_registro">Registro núm</label>
               <input type="text" className="form-control" id="n_registrto" name="n_registro" 
               value={this.state.quantity} onChange={this.handleInputChange}></input>
+            </div>
+            <div className="form-group">
+              <label htmlFor="cc">C.C.</label>
+              <input type="text" className="form-control" id="cc" name="cc" 
+              value={this.state.cc} onChange={this.handleInputChange}></input>
             </div>
             <div className="form-group">
               <label htmlFor="notas">Notas</label>

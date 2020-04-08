@@ -57,7 +57,6 @@ router.post('/edit', (req,res,next) => {
       diocesis: req.body.diocesis, 
       grupo: req.body.grupo, 
       cargo: req.body.cargo, 
-      cc: req.body.cc, 
       revista: req.body.revista
       }, 
       {new:true}
@@ -90,4 +89,3 @@ router.get('/find/:group', (req,res,next) => {
 
 
 module.exports = router
-//const {nombre, dni, telefono, email, direccion, cp, fecha_nacimiento, delegacion, diocesis, grupo, cargo, cc, revista} = req.body

@@ -1,4 +1,18 @@
 
+.search .second-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search label {
+margin-right: 5px;
+}
+
+.search input {
+margin-right: 20px;
+}
+
 .unit-card {
   max-width: 1400px;
 }
+

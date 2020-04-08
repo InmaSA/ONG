@@ -11,6 +11,7 @@ const groupSchema = new Schema ({
   poblacion: String,
   ereccion: String,
   n_registro: String,
+  cc: String,
   notas: String,
 },{timestamps: true})
 

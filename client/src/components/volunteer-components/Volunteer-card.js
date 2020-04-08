@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 
 import VolunteerServices from '../../services/volunteer.services'
 import '../../styles/card.css'
@@ -28,9 +27,7 @@ class VolunteerCard extends Component {
   }
 
   render() {
-console.log(this.props.rol)
 
-    {
       if (this.props.rol === 'ADMIN') {
         return (
           <>
@@ -50,11 +47,10 @@ console.log(this.props.rol)
                   <p><span>c.p.: </span>{this.props.elm.cp}</p>
                   <p><span>teléfono: </span>{this.props.elm.telefono}</p>
                   <p><span>email: </span>{this.props.elm.email}</p>
-                  <p><span>c.c.: </span>{this.props.elm.cc}</p>
                   <label htmlFor="revista"><span>revista: </span></label>
                   <input name="revista" id="revista" type="checkbox" readOnly={true} checked={this.props.elm.revista}></input>
                   <div>
-                    <button onClick={this.handleModalOpen} className="btn btn-warning">Editar</button>
+                    <button onClick={this.handleModalOpen} className="btn btn-warning edit">Editar</button>
                     <button id={this.props.elm._id} onClick={this.delete} className="btn btn-danger">Eliminar</button>
                   </div>
                   
@@ -100,7 +96,6 @@ console.log(this.props.rol)
           
         </article>  
       )
-    }
   }
 }
 
