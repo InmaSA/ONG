@@ -108,7 +108,7 @@ class VolunteersDashborad extends Component {
 
   render() {
 
-    {if (this.props.user.data.rol == 'ADMIN') {
+    {if (this.props.loggedInUser.data.rol == 'ADMIN') {
       return(
         <main className="container unit-card">
           <section className="search">
@@ -151,55 +151,91 @@ class VolunteersDashborad extends Component {
           </section>
   
           <section>
-            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm} rol={this.props.user.data.rol}/>)}
+            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm} rol={this.props.loggedInUser.data.rol}/>)}
           </section>
         </main>
       )
     }
-    if (this.props.user.data.rol == 'DELEGADA') {
+    if (this.props.loggedInUser.data.rol == 'DELEGADA') {
       return(
         <main className="container unit-card">
-          <section>
+          <section className="search">
             <header>
               <h3>Filtra por campos:</h3>
             </header>
-            <div className="row">
-              <form className="form-inline">
-                <label className="label" htmlFor="filter-diocesis">Diócesis: </label>
+            <div className="form-inline">
+              <form className="form-group">
+                <label htmlFor="filter-diocesis">Diócesis: </label>
                 <input className="form-control form-control-sm" type="text" name="diocesis" id="filter-diocesis" value={this.state.diocesis} onChange={this.handleSearchInput}></input>
               </form>
-              <form className="form-inline">
-                <label className="label" htmlFor="filter-grupo">Grupo: </label>
+              <div className="form-group">
+                <label htmlFor="filter-grupo">Grupo: </label>
                 <input className="form-control form-control-sm" type="text" name="grupo" id="filter-grupo" value={this.state.grupo} onChange={this.handleSearchInput}></input>
-              </form>
-              <button onClick={this.clearAll} className="submit-btn btn-light" type="submit">Refrescar las búsquedas</button>
+              </div>
+            </div>
+            <div className="form-inline second-row">
+              <div className="form-check form-check-inline">
+                <label className="form-check-label" htmlFor="revista-SI">Revista</label>
+                <input className="form-check-input" type="radio" name="revista" id="revista-SI" value='SI' onChange={this.handleSearchInput}></input>
+              </div>
+              <div className="form-check form-check-inline">
+                <label className="form-check-label" htmlFor="revista-NO">No</label>
+                <input className="form-check-input" type="radio" name="revista" id="revista-NO" value='NO' onChange={this.handleSearchInput}></input>
+              </div>
+              <div className="form-group">
+                <label className="label" htmlFor="filter-fecha_nacimiento">Fecha de nacimiento (DD/MM/AAAA): </label>
+                <input className="form-control form-control-sm" type="text" name="fecha_nacimiento" id="filter-fecha_nacimiento" value={this.state.fecha_nacimiento} onChange={this.handleSearchInput}></input>
+              </div>
+              <div className="form-group">
+                <label className="label" htmlFor="filter-grupo">Nombre: </label>
+                <input className="form-control form-control-sm" type="text" name="nombre" id="filter-nombre" value={this.state.nombre} onChange={this.handleSearchInput}></input>
+              </div>
+              <button onClick={this.clearAll} className="btn btn-primary" type="submit">Refrescar las búsquedas</button>
             </div>
           </section>
   
           <section>
-            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm} rol={this.props.user.data.rol}/>)}
+            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm} rol={this.props.loggedInUser.data.rol}/>)}
           </section>
         </main>
       )
     }
-    if (this.props.user.data.rol == 'DIOCESANA') {
+    if (this.props.loggedInUser.data.rol == 'DIOCESANA') {
       return(
         <main className="container unit-card">
-          <section>
+          <section className="search">
             <header>
               <h3>Filtra por campos:</h3>
             </header>
-            <div className="row">
-              <form className="form-inline">
-                <label className="label" htmlFor="filter-grupo">Grupo: </label>
+            <div className="form-inline">
+              <div className="form-group">
+                <label htmlFor="filter-grupo">Grupo: </label>
                 <input className="form-control form-control-sm" type="text" name="grupo" id="filter-grupo" value={this.state.grupo} onChange={this.handleSearchInput}></input>
-              </form>
-              <button onClick={this.clearAll} className="submit-btn btn-light" type="submit">Refrescar las búsquedas</button>
+              </div>
+            </div>
+            <div className="form-inline second-row">
+              <div className="form-check form-check-inline">
+                <label className="form-check-label" htmlFor="revista-SI">Revista</label>
+                <input className="form-check-input" type="radio" name="revista" id="revista-SI" value='SI' onChange={this.handleSearchInput}></input>
+              </div>
+              <div className="form-check form-check-inline">
+                <label className="form-check-label" htmlFor="revista-NO">No</label>
+                <input className="form-check-input" type="radio" name="revista" id="revista-NO" value='NO' onChange={this.handleSearchInput}></input>
+              </div>
+              <div className="form-group">
+                <label className="label" htmlFor="filter-fecha_nacimiento">Fecha de nacimiento (DD/MM/AAAA): </label>
+                <input className="form-control form-control-sm" type="text" name="fecha_nacimiento" id="filter-fecha_nacimiento" value={this.state.fecha_nacimiento} onChange={this.handleSearchInput}></input>
+              </div>
+              <div className="form-group">
+                <label className="label" htmlFor="filter-grupo">Nombre: </label>
+                <input className="form-control form-control-sm" type="text" name="nombre" id="filter-nombre" value={this.state.nombre} onChange={this.handleSearchInput}></input>
+              </div>
+              <button onClick={this.clearAll} className="btn btn-primary" type="submit">Refrescar las búsquedas</button>
             </div>
           </section>
   
           <section>
-            {this.state.volunteersCopy.map(elm => <VolunteerCard rol={this.props.user.data.rol} key={elm._id} elm={elm} rol={this.props.user.data.rol}/>)}
+            {this.state.volunteersCopy.map(elm => <VolunteerCard rol={this.props.loggedInUser.data.rol} key={elm._id} elm={elm} rol={this.props.loggedInUser.data.rol}/>)}
           </section>
         </main>
       )
@@ -209,7 +245,7 @@ class VolunteersDashborad extends Component {
       return(
         <main className="container unit-card">
           <section>
-            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm} rol={this.props.user.data.rol}/>)}
+            {this.state.volunteersCopy.map(elm => <VolunteerCard key={elm._id} elm={elm} rol={this.props.loggedInUser.data.rol}/>)}
           </section>
         </main>
       )

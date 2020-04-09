@@ -2,6 +2,8 @@ import React,{Component} from 'react'
 import {Switch, Route} from 'react-router-dom'
 import AuthServices from './services/auth.services'
 
+import ProtectedRoute from './components/routes/ProtectedRoute'
+
 import AppNavbar from './components/layouts/AppNavbar'
 import HomePage from './components/layouts/HomePage'
 import Login from './components/auth-components/Login'
@@ -41,8 +43,8 @@ class App extends Component {
             <Route path="/" exact component={HomePage}></Route>
             <Route path="/login" exact render={match => <Login {...match}  setUser={this.setTheUser} />}></Route>
             <Route path="/nuevo-grupo" exact component={NewGroup}></Route>
-            <Route path="/grupos" exact render={match => <GroupsDashboard {...match} user={this.state.loggedInUser} />}></Route>
-            <Route path="/voluntarios" exact render={match => <VolunteersDashboard {...match} user={this.state.loggedInUser} />}></Route>
+            <ProtectedRoute path='/grupos' user={this.state.loggedInUser} component={GroupsDashboard} />
+            <ProtectedRoute path='/voluntarios' user={this.state.loggedInUser} component={VolunteersDashboard} />
             <Route path="/altas-voluntarios" exact component={NewVolunteer}></Route>
           </Switch>
 
@@ -57,26 +59,26 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={HomePage}></Route>
             <Route path="/login" exact render={match => <Login {...match}  setUser={this.setTheUser} />}></Route>
-            <Route path="/voluntarios" exact render={match => <VolunteersDashboard {...match} user={this.state.loggedInUser} />}></Route>
-            <Route path="/grupos" exact render={match => <GroupsDashboard {...match} user={this.state.loggedInUser} />}></Route>
+            <ProtectedRoute path='/voluntarios' user={this.state.loggedInUser} component={VolunteersDashboard} />
+            <ProtectedRoute path='/grupos' user={this.state.loggedInUser} component={GroupsDashboard} />
           </Switch>
 
         </>
       )
     }
-
-
-    return (
-      <>
-        <AppNavbar user={this.state.loggedInUser} setUser={this.setTheUser}/>
-
-        <Switch>
-          <Route path="/" exact component={HomePage}></Route>
-          <Route path="/login" exact render={match => <Login {...match}  setUser={this.setTheUser} />}></Route>
-        </Switch>
-
-      </>
-    )
+    else {
+      return (
+        <>
+          <AppNavbar user={this.state.loggedInUser} setUser={this.setTheUser}/>
+  
+          <Switch>
+            <Route path="/" exact component={HomePage}></Route>
+            <Route path="/login" exact render={match => <Login {...match}  setUser={this.setTheUser} />}></Route>
+          </Switch>
+  
+        </>
+      )
+    }  
   }
 }
 

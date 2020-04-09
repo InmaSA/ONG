@@ -11,13 +11,32 @@ router.post('/new', (req,res,next) => {
   })
 })
 
+
 router.get('/list', (req,res,next) => {
-  Group.find()
-  .then(gruops => res.json(gruops))
-  .catch(err => {
-    res.status(500).json({message: 'Error obteniendo la lista de grupos'})
-  })
+  const {name, rol} = req.user
+  if (rol === 'DELEGADA') {
+    Group.find({delegacion: name})
+    .then(allGroups => res.json(allGroups))
+    .catch(err => {
+      res.status(500).json({message: 'Error obteniendo el listado de grupos'})
+    })
+  }
+  else if (rol === 'DIOCESANA') {
+    Group.find({diocesis: name})
+    .then(allGroups => res.json(allGroups))
+    .catch(err => {
+      res.status(500).json({message: 'Error obteniendo el listado de grupos'})
+    })
+  }
+  else {
+    Group.find()
+    .then(allGroups => res.json(allGroups))
+    .catch(err => {
+      res.status(500).json({message: 'Error obteniendo el listado de grupos'})
+    })
+  }
 })
+
 
 router.post('/edit-notes', (req,res,next) => {
   Group.findByIdAndUpdate(req.body._id, {notas: req.body.notas}, {new:true})

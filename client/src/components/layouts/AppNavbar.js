@@ -41,7 +41,7 @@ class AppNavbar extends Component {
       </Navbar>
       )
     }
-    if (this.props.user && this.props.user.data.rol !== 'ADMIN') {
+    if (this.props.user && (this.props.user.data.rol === 'DIOCESANA' || this.props.user.data.rol === 'DELEGADA') ) {
       return(
         <Navbar bg="light" expand="lg">
           <Navbar.Brand href="/">
@@ -52,6 +52,22 @@ class AppNavbar extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/voluntarios">Ver voluntarios</Nav.Link>
               <Nav.Link href="/grupos">Ver grupos</Nav.Link>
+              <Nav.Link href="/logout" onClick={this.logout}>Cerrar sesión</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      )
+    }
+    if (this.props.user && this.props.user.data.rol === 'GRUPO') {
+      return(
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="/">
+          <img width="5%" src="images/logo_AIC_ESP_2019.jpg" alt="logo"></img>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="/voluntarios">Ver voluntarios</Nav.Link>
               <Nav.Link href="/logout" onClick={this.logout}>Cerrar sesión</Nav.Link>
             </Nav>
           </Navbar.Collapse>

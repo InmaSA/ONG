@@ -23,7 +23,7 @@ class GroupsDashborad extends Component {
   render() {
     return(
       <div className="container unit-card">
-      {this.state.groups.map(elm => <GroupCard key={elm._id} elm={elm} />)}
+      {this.state.groups.map(elm => <GroupCard key={elm._id} elm={elm} rol={this.props.loggedInUser.data.rol}/>)}
       </div>
     )
   }
