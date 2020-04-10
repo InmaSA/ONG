@@ -45,21 +45,10 @@ router.get('/list', (req,res,next) => {
 })
 
 router.post('/edit', (req,res,next) => {
-  Volunteer.findByIdAndUpdate(req.body._id, {
-      nombre: req.body.nombre, 
-      dni: req.body.dni, 
-      telefono: req.body.telefono, 
-      email: req.body.email, 
-      direccion: req.body.direccion, 
-      cp: req.body.cp, 
-      fecha_nacimiento: req.body.fecha_nacimiento, 
-      delegacion: req.body.delegacion, 
-      diocesis: req.body.diocesis, 
-      grupo: req.body.grupo, 
-      cargo: req.body.cargo, 
-      revista: req.body.revista
-      }, 
-      {new:true}
+  const {_id, cargo, delegacion, diocesis, grupo, nombre, dni, fecha_nacimiento, direccion, cp, telefono, email, cc, revista} = req.body
+  Volunteer.findByIdAndUpdate(_id, 
+    {cargo, delegacion, diocesis, grupo, nombre, dni, fecha_nacimiento, direccion, cp, telefono, email, cc, revista}, 
+    {new:true}
     )
   .then(editedVolunteer => res.json(editedVolunteer))
   .catch(err => {

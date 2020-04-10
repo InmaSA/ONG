@@ -12,6 +12,6 @@ export default class GroupServices {
 
   addGroup = (group) => this.service.post('group/new', group)
   getGroups = () => this.service.get('group/list')
-  editNotes = ({notas, _id}) => this.service.post(`group/edit-notes`, ({notas, _id}))
+  editGroup = (group) => this.service.post('group/edit', group)
   
 }  

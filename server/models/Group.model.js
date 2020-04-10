@@ -13,6 +13,10 @@ const groupSchema = new Schema ({
   n_registro: String,
   cc: String,
   notas: String,
+  nombreConsiliario: String,
+  emailConsiliario: String,
+  direccionConsiliario: String,
+  telefonoConsiliario: String
 },{timestamps: true})
 
 const Group = mongoose.model('Group', groupSchema)

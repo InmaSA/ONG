@@ -37,14 +37,20 @@ router.get('/list', (req,res,next) => {
   }
 })
 
-
-router.post('/edit-notes', (req,res,next) => {
-  Group.findByIdAndUpdate(req.body._id, {notas: req.body.notas}, {new:true})
+router.post('/edit', (req,res,next) => {
+    const {_id, nombre, delegacion, diocesis, provincia, parroquia, domicilio_social, poblacion, ereccion, n_registro, 
+      notas, cc, nombreConsiliario, emailConsiliario, direccionConsiliario, telefonoConsiliario} = req.body
+  Group.findByIdAndUpdate(_id, 
+    {nombre, delegacion, diocesis, provincia, parroquia, domicilio_social, poblacion, ereccion, n_registro, 
+    notas, cc, nombreConsiliario, emailConsiliario, direccionConsiliario, telefonoConsiliario}, 
+    {new:true}
+    )
   .then(editedGroup => res.json(editedGroup))
   .catch(err => {
-    res.status(500).json({message: 'Error editando notas de un grupo'})
+    res.status(500).json({message: 'Error editando el grupo'})
   })
 })
+
 
 
 module.exports = router

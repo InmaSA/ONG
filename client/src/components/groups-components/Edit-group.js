@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import {Toast} from 'react-bootstrap'
 import GroupServices from '../../services/group.services'
-import '../../styles/card.css'
 
-class NewGroup extends Component {
+class EditGroup extends Component {
   constructor() {
     super()
     this.state = {
+      _id: '',
       nombre: '',
       delegacion: '',
       diocesis: '',
@@ -21,10 +20,30 @@ class NewGroup extends Component {
       nombreConsiliario: '',
       emailConsiliario: '',
       direccionConsiliario: '',
-      telefonoConsiliario: '',
-      showToast: false
+      telefonoConsiliario: ''
     }
     this.groupServices = new GroupServices()
+  }
+
+  componentDidMount() {
+    this.setState({
+      _id: this.props.group._id ,
+      nombre: this.props.group.nombre ,
+      delegacion: this.props.group.delegacion ,
+      diocesis: this.props.group.diocesis ,
+      provincia: this.props.group.provincia ,
+      parroquia: this.props.group.parroquia ,
+      domicilio_social: this.props.group.domicilio_social,
+      poblacion: this.props.group.poblacion ,
+      ereccion: this.props.group.ereccion ,
+      n_registro: this.props.group.n_registro ,
+      cc: this.props.group.cc ,
+      notas: this.props.group.notas ,
+      nombreConsiliario: this.props.group.nombreConsiliario ,
+      emailConsiliario: this.props.group.emailConsiliario ,
+      direccionConsiliario: this.props.group.direccionConsiliario ,
+      telefonoConsiliario: this.props.group.telefonoConsiliario
+    })
   }
 
   handleInputChange = e => {
@@ -34,41 +53,39 @@ class NewGroup extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault()
-    const {nombre, delegacion, diocesis, provincia, parroquia, domicilio_social, poblacion, ereccion, n_registro, notas, cc, nombreConsiliario, emailConsiliario, direccionConsiliario, telefonoConsiliario} = this.state
-    this.groupServices.addGroup({nombre, delegacion, diocesis, provincia, parroquia, domicilio_social, poblacion, ereccion, n_registro, notas, cc, nombreConsiliario, emailConsiliario, direccionConsiliario, telefonoConsiliario})
-    this.handleToastOpen()
+    const {_id, nombre, delegacion, diocesis, provincia, parroquia, domicilio_social, poblacion, ereccion, n_registro, notas, cc, 
+      nombreConsiliario, emailConsiliario, direccionConsiliario, telefonoConsiliario} = this.state
+
+    this.groupServices.editGroup({_id, nombre, delegacion, diocesis, provincia, parroquia, domicilio_social, poblacion, ereccion, 
+      n_registro, notas, cc, nombreConsiliario, emailConsiliario, direccionConsiliario, telefonoConsiliario})
+      
+    .then(response => {
+      this.setState({
+        nombre: response.data.nombre ,
+        delegacion: response.data.delegacion ,
+        diocesis: response.data.diocesis ,
+        provincia: response.data.provincia ,
+        parroquia: response.data.parroquia ,
+        domicilio_social: response.data.domicilio_social ,
+        poblacion: response.data.poblacion ,
+        ereccion: response.data.ereccion ,
+        n_registro: response.data.n_registro ,
+        cc: response.data.cc ,
+        notas: response.data.notas ,
+        nombreConsiliario: response.data.nombreConsiliario ,
+        emailConsiliario: response.data.emailConsiliario ,
+        direccionConsiliario: response.data.direccionConsiliario ,
+        telefonoConsiliario: response.data.telefonoConsiliario
+      })
+    })
   }
   
-  handleToastOpen = () => this.setState({ showToast: true })
-  handleToastClose = () => this.setState(
-    {nombre: '',
-    delegacion: '',
-    diocesis: '',
-    provincia: '',
-    parroquia: '',
-    domicilio_social: '',
-    poblacion: '',
-    ereccion: '',
-    n_registro: '',
-    cc: '',
-    notas: '',
-    nombreConsiliario: '',
-    emailConsiliario: '',
-    direccionConsiliario: '',
-    telefonoConsiliario: '',
-    showToast: false })
+
 
   render() {
 
     return (
       <div className="container">
-       <Toast onClose={this.handleToastClose} show={this.state.showToast} delay={4000} autohide style={{ position: 'fixed', bottom: 100, right: 600, zIndex: 9999 }}>
-          <Toast.Header>
-              <strong className="mr-auto">Aviso:</strong>
-          </Toast.Header>
-          <Toast.Body>Grupo creado correctamente.</Toast.Body>
-        </Toast>
-        
         <form className="row justify-content-around" onSubmit={this.handleFormSubmit}>
           <div className="col-5">
             <div className="form-group">
@@ -111,9 +128,6 @@ class NewGroup extends Component {
               <input type="text" className="form-control" id="ereccion" name="ereccion" 
               value={this.state.ereccion} onChange={this.handleInputChange}></input>
             </div>
-          </div>
-
-          <div className="col-5">
             <div className="form-group">
               <label htmlFor="n_registro">Registro núm</label>
               <input type="text" className="form-control" id="n_registro" name="n_registro" 
@@ -124,6 +138,9 @@ class NewGroup extends Component {
               <input type="text" className="form-control" id="cc" name="cc" 
               value={this.state.cc} onChange={this.handleInputChange}></input>
             </div>
+          </div>
+
+          <div className="col-5">
             <div className="border consiliario">
               <p>Consiliario/a:</p>
               <div className="form-group">
@@ -154,7 +171,7 @@ class NewGroup extends Component {
               rows="6" value={this.state.notas} onChange={this.handleInputChange}></textarea>
             </div>
 
-            <button type="submit" className="btn btn-primary">Añadir</button>
+            <button type="submit" className="btn btn-warning">Editar</button>
           </div>
         </form>
       </div>
@@ -163,4 +180,4 @@ class NewGroup extends Component {
 }
 
 
-export default NewGroup
+export default EditGroup

@@ -12,6 +12,7 @@ import GroupsDashboard from './components/groups-components/Groups-dashboard'
 import VolunteersDashboard from './components/volunteer-components/Volunteers-dashboard'
 import NewVolunteer from './components/volunteer-components/NewVolunteer'
 
+
 class App extends Component {
   constructor() {
     super()
@@ -51,7 +52,7 @@ class App extends Component {
         </>
       )
     }
-     if (this.state.loggedInUser && this.state.loggedInUser.data.rol != 'ADMIN') {
+     if (this.state.loggedInUser && this.state.loggedInUser.data.rol !== 'ADMIN') {
       return (
         <>
           <AppNavbar user={this.state.loggedInUser} setUser={this.setTheUser}/>

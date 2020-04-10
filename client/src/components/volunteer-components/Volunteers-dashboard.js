@@ -108,7 +108,7 @@ class VolunteersDashborad extends Component {
 
   render() {
 
-    {if (this.props.loggedInUser.data.rol == 'ADMIN') {
+    {if (this.props.loggedInUser.data.rol === 'ADMIN') {
       return(
         <main className="container unit-card">
           <section className="search">
@@ -156,7 +156,7 @@ class VolunteersDashborad extends Component {
         </main>
       )
     }
-    if (this.props.loggedInUser.data.rol == 'DELEGADA') {
+    if (this.props.loggedInUser.data.rol === 'DELEGADA') {
       return(
         <main className="container unit-card">
           <section className="search">
@@ -200,7 +200,7 @@ class VolunteersDashborad extends Component {
         </main>
       )
     }
-    if (this.props.loggedInUser.data.rol == 'DIOCESANA') {
+    if (this.props.loggedInUser.data.rol === 'DIOCESANA') {
       return(
         <main className="container unit-card">
           <section className="search">

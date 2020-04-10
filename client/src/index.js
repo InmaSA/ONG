@@ -4,9 +4,13 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter as Router } from 'react-router-dom'
 
+import './index.css'
+
 ReactDOM.render(
     <Router>
-        <App />
+        <div className="body">
+            <App />
+        </div>
     </Router>,document.getElementById('root')
 )
 
