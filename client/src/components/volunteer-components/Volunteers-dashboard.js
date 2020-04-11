@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import '../../styles/dashboard.css'
 import VolunteerServices from '../../services/volunteer.services'
 import VolunteerCard from './Volunteer-card'
+import Excell from '../excell-components/Excell'
+
+import '../../styles/volunteersDashboard.css'
 
 class VolunteersDashborad extends Component {
   constructor() {
@@ -54,7 +57,7 @@ class VolunteersDashborad extends Component {
   }
 
   search = (word, field) => {
-    console.log(word)
+
     let results = []
       switch(field) {
         case 'delegacion':
@@ -146,7 +149,8 @@ class VolunteersDashborad extends Component {
                 <label className="label" htmlFor="filter-grupo">Nombre: </label>
                 <input className="form-control form-control-sm" type="text" name="nombre" id="filter-nombre" value={this.state.nombre} onChange={this.handleSearchInput}></input>
               </div>
-              <button onClick={this.clearAll} className="btn btn-primary" type="submit">Refrescar las búsquedas</button>
+              <button onClick={this.clearAll} className="btn btn-primary refresh" type="submit">Refrescar las búsquedas</button>
+              <Excell volunteers={this.state.volunteersCopy}/>
             </div>
           </section>
   

@@ -17,7 +17,6 @@ class NewVolunteer extends Component {
       cp: '',
       telefono: '',
       email: '',
-      cc: '',
       revista: false,
       showToast: false
     }
@@ -32,8 +31,8 @@ class NewVolunteer extends Component {
 
   handleFormSubmit = e => {
     e.preventDefault()
-    const {cargo, delegacion, diocesis, grupo, nombre, dni, fecha_nacimiento, direccion, cp, telefono, email, cc, revista} = this.state
-    this.volunteerServices.addVolunteer({cargo, delegacion, diocesis, grupo, nombre, dni, fecha_nacimiento, direccion, cp, telefono, email, cc, revista})
+    const {cargo, delegacion, diocesis, grupo, nombre, dni, fecha_nacimiento, direccion, cp, telefono, email, revista} = this.state
+    this.volunteerServices.addVolunteer({cargo, delegacion, diocesis, grupo, nombre, dni, fecha_nacimiento, direccion, cp, telefono, email, revista})
     this.handleToastOpen()
   }
   
