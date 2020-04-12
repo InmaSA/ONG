@@ -5,7 +5,7 @@ const userSchema = new Schema ({
   username: String,
   password: String,
   rol: {type: String, 
-        enum: ['ADMIN', 'JUNTA', 'DELEGADA', 'DIOCESANA', 'GRUPO'],
+        enum: ['ADMIN', 'DELEGADA', 'DIOCESANA', 'GRUPO'],
         default: 'GRUPO'},
   name: String,      
 },{timestamps: true})

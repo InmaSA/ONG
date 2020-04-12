@@ -78,6 +78,7 @@ app.use('/', require('./routes/index.routes'))
 app.use('/api', require('./routes/auth.routes'))
 app.use('/api/group', require('./routes/group.routes'))
 app.use('/api/volunteer', require('./routes/volunteer.routes'))
+app.use('/api/users', require('./routes/users.routes'))
 
 
 module.exports = app

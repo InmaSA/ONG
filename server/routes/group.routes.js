@@ -3,6 +3,7 @@ const router = express.Router()
 
 const Group = require('../models/Group.model')
 
+/*-------------------------------- CREATE NEW GROUP-------------------------------- */
 router.post('/new', (req,res,next) => {
   Group.create(req.body)
   .then(theNewGruop => res.json(theNewGruop))
@@ -10,6 +11,9 @@ router.post('/new', (req,res,next) => {
     res.status(500).json({message: 'Error creando un nuevo grupo'})
   })
 })
+
+
+/*-------------------------------- LIST ALL GROUPS-------------------------------- */
 
 
 router.get('/list', (req,res,next) => {
@@ -36,6 +40,9 @@ router.get('/list', (req,res,next) => {
     })
   }
 })
+
+
+/*-------------------------------- EDIT A GROUP-------------------------------- */
 
 router.post('/edit', (req,res,next) => {
     const {_id, nombre, delegacion, diocesis, provincia, parroquia, domicilio_social, poblacion, ereccion, n_registro, 

@@ -37,6 +37,10 @@ class AppNavbar extends Component {
                 <NavDropdown.Item href="/nuevo-grupo">Crear grupo</NavDropdown.Item>
                 <NavDropdown.Item href="/grupos">Ver grupos</NavDropdown.Item>
               </NavDropdown>
+              <NavDropdown title="Usuarios" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/nuevo-usuario">Crear usuario</NavDropdown.Item>
+                <NavDropdown.Item href="/usuarios">Ver usuarios</NavDropdown.Item>
+              </NavDropdown>
               <Nav.Link href="/logout" onClick={this.logout}>Cerrar sesión</Nav.Link>
             </Nav>
           </Navbar.Collapse>

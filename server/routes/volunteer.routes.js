@@ -3,6 +3,8 @@ const router = express.Router()
 
 const Volunteer = require('../models/Volunteer.model')
 
+/*-------------------------------- CREATE NEW VOLUNTEER-------------------------------- */
+
 router.post('/new', (req,res,next) => {
   Volunteer.create(req.body)
   .then(theNewVolunteer => res.json(theNewVolunteer))
@@ -10,6 +12,8 @@ router.post('/new', (req,res,next) => {
     res.status(500).json({message: 'Error creando un nuevo voluntario'})
   })
 })
+
+/*-------------------------------- GET LIST OF ALL VOLUNTEERS-------------------------------- */
 
 router.get('/list', (req,res,next) => {
   const {name, rol} = req.user
@@ -44,6 +48,9 @@ router.get('/list', (req,res,next) => {
   }
 })
 
+
+/*-------------------------------- EDIT A VOLUNTEER-------------------------------- */
+
 router.post('/edit', (req,res,next) => {
   const {_id, cargo, delegacion, diocesis, grupo, nombre, dni, fecha_nacimiento, direccion, cp, telefono, email, cc, revista} = req.body
   Volunteer.findByIdAndUpdate(_id, 
@@ -57,6 +64,8 @@ router.post('/edit', (req,res,next) => {
 })
 
 
+/*-------------------------------- DELETE A VOLUNTEER-------------------------------- */
+
 router.get('/delete/:_id', (req,res,next) => {
   console.log(req.params._id)
   Volunteer.findByIdAndDelete(req.params._id)
@@ -67,6 +76,8 @@ router.get('/delete/:_id', (req,res,next) => {
   .catch(err => console.log({message: 'error eliminando el voluntario de la base de datos'}))
 })
 
+
+/*-------------------------------- GET THE VOLUNTEERS IN A GROUP-------------------------------- */
 
 router.get('/find/:group', (req,res,next) => {
   Volunteer.find({grupo: req.params.group})

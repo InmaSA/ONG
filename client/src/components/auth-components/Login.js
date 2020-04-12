@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../../styles/login.css'
 
 import AuthServices from '../../services/auth.services'
 
@@ -40,7 +41,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container login">
         <div className="row justify-content-center">
           <form className="col-4" onSubmit={this.handleFormSubmit}>
             <div className="form-group">
